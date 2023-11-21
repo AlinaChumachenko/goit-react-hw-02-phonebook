@@ -37,10 +37,22 @@ export class App extends Component {
 
   showFilteredContacts = () => {
     const { filter, contacts } = this.state;
-    return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(filter)
-    );
+    const FilterlowerCase = filter.toLowerCase();
+    if (filter === '') {
+      return contacts;
+    } else {
+      return contacts.filter(({ name }) =>
+        name.toLowerCase().includes(FilterlowerCase)
+      );
+    }
   };
+
+  // showFilteredContacts = () => {
+  //   const { filter, contacts } = this.state;
+  //   return contacts.filter(contact =>
+  //     contact.name.toLowerCase().includes(filter)
+  //   );
+  // };
 
   removeContact = contactId => {
     this.setState(prevState => {
